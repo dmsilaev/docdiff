@@ -10,7 +10,7 @@ class DocDiff
       @tmp_files = tmp_files
 
       fail DocDiff::Error, 'несоответствие форматов' if File.extname(before_tmp) != File.extname(after_tmp)
-      fail DocDiff::Error, 'неверный формат' unless ACCEPTED_FORMATS.include?(extname)
+      fail DocDiff::Error, 'неверный формат' unless ACCEPTED_FORMATS.include?(File.extname(before_tmp))
 
       tmp_files_to_md!
       md_diff!.gsub "\n", '<br>'
