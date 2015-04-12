@@ -1,0 +1,29 @@
+%html
+  :css
+    del {
+      color: #a33;
+      background: #ffeaea;
+    }
+    ins {
+      background: #eaffea;
+      text-decoration: none;
+    }
+    pre{
+      line-height: 10px;
+      padding: 10px 20px;
+      background-color: #f7f7f7;
+    }
+  %body
+    -# Форму скопировал.
+    %h1 Загрузите документы
+    %form(method="post" action='/diff' enctype='multipart/form-data')
+      %label Старый:
+      %input(type='file' name='files[]')
+      %label Новый:
+      %input(type='file' name='files[]')
+      %br
+      %br
+      %input(type='submit' value='Загрузить')
+    - unless @diff_html.nil?
+      %h2 Результат:
+      %pre= CGI::unescape_html(@diff_html)
