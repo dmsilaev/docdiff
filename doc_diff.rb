@@ -9,7 +9,7 @@ class DocDiff
     def build(tmp_files)
       @tmp_files = tmp_files
 
-      fail DocDiff::Error, 'несоответствие форматов' if @extname != File.extname(after_tmp)
+      fail DocDiff::Error, 'несоответствие форматов' if File.extname(before_tmp) != File.extname(after_tmp)
       fail DocDiff::Error, 'неверный формат' unless ACCEPTED_FORMATS.include?(extname)
 
       tmp_files_to_md!
