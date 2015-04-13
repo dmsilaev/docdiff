@@ -8,8 +8,8 @@
       background: #eaffea;
       text-decoration: none;
     }
-    pre{
-      line-height: 10px;
+    .pre{
+      line-height: 16px;
       padding: 10px 20px;
       background-color: #f7f7f7;
     }
@@ -26,4 +26,4 @@
       %input(type='submit' value='Загрузить')
     - unless @diff_html.nil?
       %h2 Результат:
-      %pre= CGI::unescape_html(@diff_html)
+      %div(class='pre')= CGI::unescape_html(@diff_html)
