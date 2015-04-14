@@ -1,0 +1,14 @@
+h1 Сравнение документов
+
+form method="post" action="/diff" enctype="multipart/form-data"
+  label Старый:
+  input type='file' name='files[]'
+
+  label Новый:
+  input type='file' name='files[]'
+
+  input type='submit' value='Загрузить'
+
+- unless @doc_diff.nil?
+  h2 Результат:
+  div class='pre'== @doc_diff.html_diff

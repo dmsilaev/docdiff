@@ -1,0 +1,9 @@
+h1 Генерация одной страницы pdf
+
+form method="post" action="/pdf" enctype="multipart/form-data"
+  - 10.times do |i|
+    label= i
+    textarea name='fields[]'
+    br
+
+  input type='submit' value='Сгенерировать'
