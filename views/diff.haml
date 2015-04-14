@@ -24,6 +24,6 @@
       %br
       %br
       %input(type='submit' value='Загрузить')
-    - unless @diff_html.nil?
+    - unless @doc_diff.nil?
       %h2 Результат:
-      %div(class='pre')= CGI::unescape_html(@diff_html)
+      %div(class='pre')= CGI::unescape_html(@doc_diff.html_diff)
