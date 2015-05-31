@@ -2,6 +2,7 @@ require 'sinatra'
 require 'slim'
 require_relative 'lib/doc_diff'
 require_relative 'lib/pdf_list'
+require_relative 'lib/pdf_form'
 
 class DocDiffApp < Sinatra::Base
   set :views, "#{File.dirname(__FILE__)}/../views"
@@ -35,5 +36,16 @@ class DocDiffApp < Sinatra::Base
     raise 'Невозможно сгенерировать одну страничку, даже с минимальным размером шрифта' unless @doc
 
     @doc.render
+  end
+
+  post '/pdf-form' do
+    pdf_form = PdfForm.new params
+    pdf_file = pdf_form.generate_document!
+
+    "/files/#{pdf_form.name}"
+  end
+
+  get '/files/:file' do
+    send_file(File.expand_path("../../files/#{params[:file]}", __FILE__), :disposition => 'inline')
   end
 end

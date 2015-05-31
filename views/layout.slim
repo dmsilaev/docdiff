@@ -15,5 +15,22 @@ html
         padding: 10px 20px;
         background-color: #f7f7f7;
       }
+  script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"
+
+  javascript:
+    $( document ).ready(function() {
+      var $frm = $('#pdfForm');
+      $frm.submit(function (ev) {
+        ev.preventDefault();
+        $.ajax({
+            type: $frm.attr('method'),
+            url: $frm.attr('action'),
+            data: $frm.serialize(),
+            success: function (data) {
+              $frm.html("<a href='"+data+"'>Скачать</a>")
+            }
+        });
+      });
+    });
   body
     == yield

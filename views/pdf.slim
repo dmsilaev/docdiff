@@ -7,3 +7,37 @@ form method="post" action="/pdf" enctype="multipart/form-data"
     br
 
   input type='submit' value='Сгенерировать'
+
+hr
+
+h1 Генерация pdf из формы
+
+form id="pdfForm" method="post" action="/pdf-form" enctype="multipart/form-data"
+  label First name &nbsp;
+  input type='text' name='first_name'
+  br
+  br
+
+  label Middle name &nbsp;
+  input type='text' name='middle_name'
+  br
+  br
+
+  label Last name &nbsp;
+  input type='text' name='last_name'
+  br
+  br
+
+  label Gender &nbsp;
+  select name="gender"
+    option value="male" male
+    option value="female" female
+  br
+  br
+
+  label DOB &nbsp;
+  input type='date' name='dob'
+  br
+  br
+
+  input type='submit' value='Submit'
